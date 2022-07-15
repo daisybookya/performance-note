@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/performance-note/static/css/main.07c567b1.css",
+    "main.js": "/performance-note/static/js/main.732f0cfe.js",
+    "index.html": "/performance-note/index.html",
+    "main.07c567b1.css.map": "/performance-note/static/css/main.07c567b1.css.map",
+    "main.732f0cfe.js.map": "/performance-note/static/js/main.732f0cfe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07c567b1.css",
+    "static/js/main.732f0cfe.js"
+  ]
+}
