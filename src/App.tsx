@@ -1,57 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import './css/App.less';
+import ShowHeader from './components/ShowHeader';
+import ShowMenu from './components/ShowMenu';
+import ListBox from './features/list/ListBox';
+import Notes from './features/note/Notes';
+import { useAppSelector } from './app/hooks';
+import { selectShowList } from './features/list/listSlice';
+import { typeBkItem } from './features/list/listObj';
+import { Layout,BackTop } from 'antd';
+const { Footer, Content } = Layout;
 
 function App() {
+  const { type } = useAppSelector(selectShowList)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <>
+        <Layout className='layout'>
+          <ShowHeader/>
+          <Notes/>
+          <BackTop />
+          <Content className='layout-content' 
+          style={{backgroundColor: typeBkItem[type].color}}>
+            <ShowMenu></ShowMenu>
+            <ListBox/>
+          </Content>
+          <Footer className='layout-footer'>
+          cheng cheng Design ©2022 Created by cheng
+          </Footer>
+        </Layout>
+    </>
   );
 }
 
