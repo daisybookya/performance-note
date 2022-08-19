@@ -22,7 +22,7 @@ const initialState: listState = {
   list:[],
   initList:[],
   loading:false,
-  type: 'indie',
+  type: 'dance',
   area: 'none',
   city: 'none',
   sortUp: true,
