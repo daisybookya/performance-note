@@ -1,46 +1,51 @@
 @primary-color: #4f3b86; // 全局主色
-@line:#fff;
-@sedline:#999;
-@font:#fff;
-.card-container{
-    padding: 50px 0;
+@line: #fff;
+@sedline: #999;
+@font: #fff;
+.card-container {
+  padding: 50px 0;
 }
-.ant-pagination-item{
-    background: transparent;
-    border: 1px solid @line;
+.ant-pagination-item {
+  background: transparent;
+  border: 1px solid @line;
+  color: @font;
+  &.ant-pagination-item-active {
+    background: #fff;
+    a {
+      color: #000;
+    }
+  }
+  a {
     color: @font;
-    &.ant-pagination-item-active{
-        background: #fff;
-        a{
-            color: #000;
-        }
+    &:hover {
+      color: @sedline;
     }
-    a{
-        color: @font;
-        &:hover{
-            color: @sedline;
-        }
-    }
+  }
 }
-ul.list-info{
-    padding-left: 15px;
+ul.list-info {
+  padding-left: 15px;
 }
-.ant-card{
-    background: #eee;
-    text-align: left;
+.ant-card {
+  background: #eee;
+  text-align: left;
 }
-.ant-card-head{
-    border-bottom:1px solid #ccc ;
+.ant-card-head {
+  border-bottom: 1px solid #ccc;
 }
-.ant-card-body{
-    text-align: left;
-    p{
-        margin-bottom: 10px;
-    }
+.ant-card-body {
+  text-align: left;
+  p {
+    margin-bottom: 10px;
+  }
 }
 .ant-pagination-jump-prev,
-.ant-pagination-jump-next{
-    background: @line;
+.ant-pagination-jump-next {
+  background: @line;
 }
 
-
+.ant-spin-dot-spin {
+  transform: rotate(0deg) scale(3.5);
+}
+.ant-spin-dot-item {
+  background: #fff;
+}
