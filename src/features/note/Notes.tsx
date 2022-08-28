@@ -156,7 +156,6 @@ function Notes() {
                           cardInfor(item.content.showInfo[0])
                           }
                         </ul>
-                        <p style={{textAlign:'right'}}>加入筆記時間：{getDateStr()}</p>
                       </>
                     }
                   />
