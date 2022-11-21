@@ -1,23 +1,48 @@
 @primary-color: #4f3b86; // 全局主色
-@line:#fff;
-@sedline:#999;
-@font:#fff;
-.note-menu{
-    padding-bottom: 30px;
-    // .ant-segmented{
-    // }
+@line: #fff;
+@sedline: #999;
+@font: #fff;
+.note-menu {
+  padding-bottom: 30px;
+  // .ant-segmented{
+  // }
 }
-.note-type{
-    margin-right: 20px;
+.note-type {
+  margin-right: 20px;
 }
-.note-content{
-    .ant-collapse > .ant-collapse-item > .ant-collapse-header{
-        padding: 5px 10px;
+.btn-del {
+  &.active {
+    background: @sedline;
+  }
+}
+.note-content {
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    padding: 5px 10px;
+  }
+  .ant-collapse-content {
+    p {
+      margin-bottom: 0;
     }
-    .ant-collapse-content{
-        p{
-            margin-bottom: 0;
-        }
-    }
+  }
 }
-
+.ant-drawer-content {
+  .ant-radio-button-wrapper {
+    background: none;
+    color: @primary-color;
+  }
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    border: 1px solid @primary-color;
+  }
+}
+.note-detail-list {
+  margin: 20px 0;
+  padding: 0;
+}
+@media (max-width: 500px) {
+  .ant-list-item {
+    display: block;
+  }
+  .ant-list-item-action {
+    text-align: right;
+  }
+}

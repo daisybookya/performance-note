@@ -40,7 +40,7 @@ function ShowHeader() {
               </Button>}
             />
             
-            <Affix offsetTop={30} style={{ position: 'absolute', top: 30, right: 50 }}>
+            <Affix offsetTop={30} className="affix-note">
               <Button shape='circle' size="large" type="primary" onClick={openNote} className='btn-note'>
                 <UnorderedListOutlined className='btn-icon' />
               </Button>

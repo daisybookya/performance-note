@@ -92,6 +92,7 @@ function Notes() {
   const changeSortDate = (e:any)=>{
     setSortDate(e.target.value)
   }
+  const noteWidth:number = window.innerWidth < 550 ? 378:736;
   //過濾筆記內容
   function filterNote(data:noteFormat[]){
     let result = [...data]
@@ -105,13 +106,21 @@ function Notes() {
     }
   }
   return (
-    <Drawer title="展演筆記本" placement="right" size='large'
+    <Drawer title="展演筆記本" placement="right" width={noteWidth}
         onClose={closeNote} visible={isOpen}>
         <div className="note-menu">
         <Row gutter={[8, 24]}>
             <Col>
-              <Segmented value={current} className='note-type'
-                options={handleOpt()} onChange={(e:any)=>changeNoteType(e)}/>
+            <Radio.Group value={current}
+              onChange={(e:any)=>changeNoteType(e.target.value)}>  
+              {
+                handleOpt().map((v:{label:string,value:string})=>
+                  <Radio.Button value={v.value}>{v.label}</Radio.Button>
+                )
+              }
+            </Radio.Group>
+              {/* <Segmented value={current} className='note-type'
+                options={handleOpt()} onChange={(e:any)=>changeNoteType(e)}/> */}
             </Col>
             <Col>
                 日期：
@@ -124,7 +133,8 @@ function Notes() {
                   </Radio.Group>
             </Col>
             <Col>
-                <Button type="primary" shape="round" style={{marginLeft:'20px'}}
+                <Button type="primary" shape="round" className={delOpen === 'none'? 'btn-del':'btn-del active'}
+                style={{marginLeft:'20px'}}
                 onClick={toggleDel}><DeleteOutlined /></Button>
             </Col>
         </Row>
@@ -150,7 +160,7 @@ function Notes() {
                     title={item.content.title}
                     description={
                       <>
-                        <ul style={{margin:'20px 0'}}>
+                        <ul className='note-detail-list'>
                           {item.content.showInfo.length > 1 ? 
                           handleManyInfor(item.content.showInfo) :
                           cardInfor(item.content.showInfo[0])

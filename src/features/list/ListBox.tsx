@@ -94,7 +94,7 @@ function ListBox() {
     <div className="card-container">
              <List
                 locale={{emptyText: '無展演資訊'}}
-                grid={{ gutter: 24, xs: 1,sm:2,lg: 2, xl: 3, xxl: 4,  }}
+                grid={{ gutter: 24, xs: 1,sm:2,md:2,lg: 2, xl: 3, xxl: 4,  }}
                 loading={loading}
                 dataSource={filterCity(list)}
                 pagination={{

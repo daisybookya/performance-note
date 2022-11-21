@@ -1,6 +1,5 @@
 @import '~antd/dist/antd.less';
 
-
 @primary-color: #5b36c2; // 全局主色
 @link-color: #5b36c2; // 链接色
 
@@ -9,16 +8,23 @@
   font-size: 15px;
   color: #fff;
   background: #222;
-  .layout-content{
+  .layout-content {
     min-height: 500px;
     padding: 50px;
     background: #222;
   }
-  .layout-footer{
+  .layout-footer {
     background: #222;
     color: #aaa;
   }
 }
-
-
-
+@media (max-width: 500px) {
+  .layout {
+    .layout-content {
+      padding: 2rem;
+    }
+  }
+  .ant-list-empty-text {
+    color: #fff;
+  }
+}
