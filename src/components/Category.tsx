@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { changePage,getListAsync,changeType,changeArea,changeCity,selectShowList } from '../features/list/listSlice';
 import { categoryOpt } from '../features/list/listObj';
 import '../css/Category.less'
-import { Button, Radio,Segmented } from 'antd';
+import { Radio,Segmented } from 'antd';
 const Category = () =>{
   const dispatch = useAppDispatch();
   const list = useAppSelector(selectShowList).type;
@@ -15,7 +15,7 @@ const Category = () =>{
   
   //切換大分類
   const handleCategory = (value:any)=>{
-    console.log(value)
+    //console.log(value)
       dispatch(changeType(value))
       dispatch(changeArea('none'))
       dispatch(changeCity('none'))
@@ -28,7 +28,7 @@ const Category = () =>{
     onChange={(e)=> handleCategory(e.target.value)}>  
     {
       categoryOpt().map((v:{label:string,value:string})=>
-        <Radio.Button value={v.value}>{v.label}</Radio.Button>
+        <Radio.Button key={v.value} value={v.value}>{v.label}</Radio.Button>
       )
     }
   </Radio.Group>

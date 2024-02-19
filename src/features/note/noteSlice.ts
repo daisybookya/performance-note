@@ -24,7 +24,7 @@ export const noteSlice = createSlice({
         const objData = JSON.parse(strData)
         state.notes = objData;
       }
-      console.log('init note...')
+      //console.log('init note...')
     },
     addToNote: (state, action: PayloadAction<noteFormat>) => {
       state.notes.push(action.payload)

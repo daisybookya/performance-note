@@ -35,7 +35,7 @@ export const getListAsync = createAsyncThunk(
     try{
         const fetchUrl = await fetchListByType(type);
         const response = await fetchUrl.json()
-        console.log('fetching...')
+        //console.log('fetching...')
         return response
     }catch(err){
         console.error(err)
@@ -60,7 +60,7 @@ export const listSlice = createSlice({
         state.sortUp = action.payload
     },
     filterList:(state, action: PayloadAction<any>)=>{
-      console.log('this is slice 1:',state.list)
+      //console.log('this is slice 1:',state.list)
       state.list = action.payload
     },
     changePage:(state, action: PayloadAction<pageState>)=>{

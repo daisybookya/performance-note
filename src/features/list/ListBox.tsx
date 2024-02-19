@@ -2,7 +2,6 @@ import React from 'react';
 import { useAppSelector,useAppDispatch } from '../../app/hooks';
 import { selectShowList,changePage } from './listSlice';
 import { selectNote,addToNote } from '../note/noteSlice';
-import { typeBkItem } from './listObj';
 import { showType } from '../../types/listType';
 import { List, Card,Button, Popover,message } from 'antd';
 import type { PaginationProps } from 'antd';
@@ -89,7 +88,6 @@ function ListBox() {
 
       return newList
     }
-
   return (
     <div className="card-container">
              <List
@@ -109,7 +107,7 @@ function ListBox() {
                     <List.Item>
                     <Card className="card-txt"  actions={[
                     sourceLink(item),<span onClick={(e)=>addInfor(item,type)}>加入筆記</span>]}
-                    title={<span style={{color:`${typeBkItem[type].color}`}}>{item.title}</span>}>
+                    title={<span>{item.title}</span>}>
                     <p>日期時間 ： {formatTime(time)} {
                       item.showInfo.length>1 ? 
                       <Popover placement="topLeft" title="其他場次列表" 

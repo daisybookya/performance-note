@@ -4,6 +4,7 @@
 @font: #fff;
 .card-container {
   padding: 50px 0;
+  color: #fff;
 }
 .ant-pagination-item {
   background: transparent;
@@ -25,12 +26,27 @@
 ul.list-info {
   padding-left: 15px;
 }
+.ant-list {
+  //color: #fff;
+}
+.ant-list-item {
+  color: #fff;
+}
 .ant-card {
-  background: #eee;
+  backdrop-filter: blur(6px); /* 模糊效果 */
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.4);
   text-align: left;
+  color: #fff;
+  border: none;
 }
 .ant-card-head {
-  border-bottom: 1px solid #ccc;
+  //border-bottom: 1px solid #ccc;
+}
+.ant-card-head-title {
+  span {
+    color: #fff;
+  }
 }
 .ant-card-body {
   text-align: left;
@@ -40,12 +56,23 @@ ul.list-info {
 }
 .ant-pagination-jump-prev,
 .ant-pagination-jump-next {
-  background: @line;
+  //background: @line;
 }
-
+.ant-card-actions {
+  background: none;
+  color: #fff;
+  font-weight: bold;
+}
+.ant-card-actions > li > span a:not(.ant-btn),
+.ant-card-actions > li > span > .anticon {
+  color: #fff;
+}
+.ant-card-actions > li > span {
+  color: #fff;
+}
 .ant-spin-dot-spin {
   transform: rotate(0deg) scale(3.5);
 }
 .ant-spin-dot-item {
-  background: #fff;
+  //background: #fff;
 }

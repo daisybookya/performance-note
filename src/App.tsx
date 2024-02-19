@@ -11,20 +11,22 @@ import { Layout,BackTop } from 'antd';
 const { Footer, Content } = Layout;
 
 function App() {
-  const { type } = useAppSelector(selectShowList)
+  //const { type } = useAppSelector(selectShowList)
+  const list = useAppSelector(selectShowList).type;
+  const listBk = typeBkItem[list].img
+  //backgroundImage:`url(${process.env.PUBLIC_URL}/images/${listBk})`
   return (
     <>
-        <Layout className='layout'>
+        <Layout className='layout' style={{backgroundImage:`url(${process.env.PUBLIC_URL}/images/${listBk})`}}>
           <ShowHeader/>
           <Notes/>
           <BackTop />
-          <Content className='layout-content' 
-          style={{backgroundColor: typeBkItem[type].color}}>
+          <Content className='layout-content'>
             <ShowMenu></ShowMenu>
             <ListBox/>
           </Content>
           <Footer className='layout-footer'>
-          cheng cheng Design ©2022 Created by cheng
+          cheng cheng Design ©2022 Created by cheng / ver 1.1
           </Footer>
         </Layout>
     </>

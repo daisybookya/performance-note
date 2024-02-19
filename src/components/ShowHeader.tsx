@@ -24,14 +24,19 @@ function ShowHeader() {
       description:
       <>
       <p>* 網站提供全台各式類型展演資訊，並提供筆記本可收藏表演訊息至localstorage，
-        資訊內容皆由文化資料開放服務網https://opendata.culture.tw/frontsite提供
+        資訊內容皆由文化資料開放服務網提供
         </p>
         <p>* 網站使用react + Create react app + Redux + Redux Toolkit + TypeScript + (ui框架) Ant Design + Less等工具搭建</p>
+      <p>更新日誌：
+        <ul>
+          <li>1.1主介面設計更改／過濾縣市功能修正，只出現活動場地的選項</li>
+        </ul>
+      </p>
       </>,
     });
   }
   return (
-    <Header className='layout-header' style={{backgroundImage:`url(${process.env.PUBLIC_URL}/images/${listBk})`}}>
+    <Header className='layout-header'>
             <PageHeader
                 className="site-page-header"
                 title="Performance Note"

@@ -34,10 +34,10 @@ export const typeAreaItem:typeArea = {
     none:'全部區域',
 }
 export const allAreaType:typeArea = {
-    north: '台北|臺北|新北|基隆|桃園|宜蘭|新竹',
-    middle: '台中|臺中|南投|彰化|雲林|苗栗',
-    south: '台南|臺南|嘉義|高雄|屏東',
-    east: '花蓮|台東|臺東|金門|澎湖|馬祖',
+    north: '台北|新北|基隆|桃園|宜蘭|新竹',
+    middle: '台中|南投|彰化|雲林|苗栗',
+    south: '台南|嘉義|高雄|屏東',
+    east: '花蓮|台東|金門|澎湖|馬祖',
     none: '',
   }
 export const typeDateItem:typeDate = {

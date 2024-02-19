@@ -1,13 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import { useAppSelector,useAppDispatch } from '../../app/hooks';
 import { initNote,selectNote,toggleNote,removeNote,updateCurrent } from './noteSlice';
-import { typeBkItem,typeDateItem,getDateStr } from '../list/listObj';
+import { typeBkItem,typeDateItem } from '../list/listObj';
 import { showType } from '../../types/listType';
 import { typeShow } from '../list/listObj';
 import { noteFormat } from '../../types/notesType';
 import { DeleteOutlined } from '@ant-design/icons';
 import '../../css/Note.less'
-import { Drawer,List,Avatar,Button,Collapse,Segmented,Radio,Col, Row } from 'antd';
+import { Drawer,List,Avatar,Button,Collapse,Radio,Col, Row } from 'antd';
 const { Panel } = Collapse;
 function Notes() {
   const dispatch = useAppDispatch()
@@ -115,12 +115,10 @@ function Notes() {
               onChange={(e:any)=>changeNoteType(e.target.value)}>  
               {
                 handleOpt().map((v:{label:string,value:string})=>
-                  <Radio.Button value={v.value}>{v.label}</Radio.Button>
+                  <Radio.Button key={v.value} value={v.value}>{v.label}</Radio.Button>
                 )
               }
             </Radio.Group>
-              {/* <Segmented value={current} className='note-type'
-                options={handleOpt()} onChange={(e:any)=>changeNoteType(e)}/> */}
             </Col>
             <Col>
                 日期：
@@ -129,7 +127,6 @@ function Notes() {
                       handleDateOpt().map((item,i)=>
                         <Radio.Button value={item.value} key={i}>{item.label}</Radio.Button>)
                     }
-                    
                   </Radio.Group>
             </Col>
             <Col>
@@ -138,10 +135,6 @@ function Notes() {
                 onClick={toggleDel}><DeleteOutlined /></Button>
             </Col>
         </Row>
-            
-            
-            
-          
         </div>
         <div className="note-content">
         <List
@@ -176,5 +169,4 @@ function Notes() {
       </Drawer>
   );
 }
-
 export default Notes;

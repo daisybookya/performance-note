@@ -14,7 +14,7 @@ function ShowMenu() {
                 區域：<Area/>
             </Col>
             <Col xs={24} sm={7} md={8} lg={10} xl={4}>
-                縣市：<City/>
+                <City/>
             </Col>
         </Row>
     </div>
