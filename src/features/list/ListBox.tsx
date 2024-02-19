@@ -3,13 +3,14 @@ import { useAppSelector,useAppDispatch } from '../../app/hooks';
 import { selectShowList,changePage } from './listSlice';
 import { selectNote,addToNote } from '../note/noteSlice';
 import { showType } from '../../types/listType';
+import { allAreaType } from '../../features/list/listObj';
 import { List, Card,Button, Popover,message } from 'antd';
 import type { PaginationProps } from 'antd';
 import '../../css/ListBox.less'
 
 function ListBox() {
   const dispatch = useAppDispatch();
-    const { list,loading,type,page,city } = useAppSelector(selectShowList)
+    const { list,loading,type,page,city,area } = useAppSelector(selectShowList)
     const { notes } = useAppSelector(selectNote)
     const changeListPage:PaginationProps['onChange'] = (page,size)=>{
         dispatch(changePage({current:page,size:size}))
@@ -88,6 +89,24 @@ function ListBox() {
 
       return newList
     }
+    function filterShowInfo(infoArr:any[]){
+      if(infoArr.length === 1) return infoArr[0]
+      if(area !== 'none' && city === 'none'){
+        const hasArea = infoArr.filter(item=>{
+          const keyword = item.location.slice(0,2).replace(/臺/g,'台')
+          return allAreaType[area].includes(keyword)
+        })
+        return hasArea.length ? hasArea[0]:infoArr[0]
+      }
+      if(city !== 'none'){
+        const hasCity = infoArr.filter(item=>{
+          const location = item.location.slice(0,2).replace(/臺/gi,'台')
+          return location.includes(city)
+        })
+        return hasCity.length ? hasCity[0]:infoArr[0]
+      }
+      return infoArr[0]
+    }
   return (
     <div className="card-container">
              <List
@@ -102,7 +121,7 @@ function ListBox() {
                   }}
                 renderItem={(item:any) => {
                   const {time,locationName,location,
-                    onSales,price} = item.showInfo[0]
+                    onSales,price} = filterShowInfo(item.showInfo)
                   return (
                     <List.Item>
                     <Card className="card-txt"  actions={[

@@ -27,9 +27,11 @@ const Area = () =>{
     if(value === 'none'){
       newList = [...initList]
     }else{
-      const regex = RegExp(`/${allAreaType[value]}/g`)
-      newList = initList.filter((item,i)=>{
-        const foundIndex = item.showInfo.findIndex((i:any)=> i.location.search(regex)>-1)
+      newList = initList.filter(data=>{
+        const foundIndex = data.showInfo.findIndex((item:any)=>{
+          const keyword = item.location.slice(0,2).replace(/臺/g,'台')
+          return allAreaType[value].includes(keyword)
+        })
         return foundIndex > -1
       })
     }

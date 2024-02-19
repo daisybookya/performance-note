@@ -12,7 +12,7 @@ const City = () =>{
   const dispatch = useAppDispatch();
   const show = useAppSelector(selectShowList);
   const {area,city} = show
-  console.log(show)
+  //console.log(show)
   //區域的選項
   const cityOpt = (area:keyof typeArea)=>{
     let result:typeOpt[] = [{label:'請選擇',value:'none'}]
