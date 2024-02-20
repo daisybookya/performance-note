@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { changePage,changeArea,changeCity,filterList,selectShowList } from '../features/list/listSlice';
-import { typeAreaItem,allAreaType } from '../features/list/listObj';
+import { typeAreaItem,allAreaType,filterArea } from '../features/list/listObj';
 import { typeArea, typeOpt } from '../types/listType'
 import '../css/Category.less'
 import { Segmented } from 'antd';
@@ -28,14 +28,10 @@ const Area = () =>{
       newList = [...initList]
     }else{
       newList = initList.filter(data=>{
-        const foundIndex = data.showInfo.findIndex((item:any)=>{
-          const keyword = item.location.slice(0,2).replace(/臺/g,'台')
-          return allAreaType[value].includes(keyword)
-        })
-        return foundIndex > -1
+        const foundAry = filterArea(data.showInfo,allAreaType[value])
+        return foundAry.length > 0
       })
     }
-    
     dispatch(filterList(newList))
   }
   return (

@@ -3,7 +3,7 @@ import { useAppSelector,useAppDispatch } from '../../app/hooks';
 import { selectShowList,changePage } from './listSlice';
 import { selectNote,addToNote } from '../note/noteSlice';
 import { showType } from '../../types/listType';
-import { allAreaType } from '../../features/list/listObj';
+import { allAreaType,filterKeyword,filterArea } from '../../features/list/listObj';
 import { List, Card,Button, Popover,message } from 'antd';
 import type { PaginationProps } from 'antd';
 import '../../css/ListBox.less'
@@ -32,13 +32,12 @@ function ListBox() {
       }
     }
     //處理其他場次列表
-    const handleShowInfo = (info:any[])=>{
-      const lis = info.map((item,i)=> {
-        if(i>0){
-          return <li key={i}>{formatTime(item.time)} - 
+    const handleShowInfo = (info:any[],time:string)=>{
+      const otherTime = info.filter(item=> item.time !== time)
+      if(!otherTime.length) return false
+      const lis = otherTime.map((item,i)=> {
+        return <li key={i}>{formatTime(item.time)} - 
           {item.location.slice(0,3)}</li>
-        }
-        return false
       })
       return (
         <>
@@ -71,38 +70,26 @@ function ListBox() {
         message.success('成功添加到筆記本！');
         dispatch(addToNote(inforObj))
       }
-      
     }
     function filterCity(data:any){
       let newList = [...data]
       if(city !== 'none'){
         newList = data.filter((item:any) =>{
-          const hasItem = item.showInfo.filter((v:any) =>{
-           const address = v.location.replace(/臺/g,'台')
-           const foundIndex = address.search(city)
-           return foundIndex > -1
-         })
+          const hasItem = filterKeyword(item.showInfo,city)
          return hasItem.length > 0
        })
       }
       newList.sort((a,b)=> a.showInfo[0].time < b.showInfo[0].time ? -1:1)
-
       return newList
     }
     function filterShowInfo(infoArr:any[]){
       if(infoArr.length === 1) return infoArr[0]
       if(area !== 'none' && city === 'none'){
-        const hasArea = infoArr.filter(item=>{
-          const keyword = item.location.slice(0,2).replace(/臺/g,'台')
-          return allAreaType[area].includes(keyword)
-        })
+        const hasArea = filterArea(infoArr,allAreaType[area])
         return hasArea.length ? hasArea[0]:infoArr[0]
       }
       if(city !== 'none'){
-        const hasCity = infoArr.filter(item=>{
-          const location = item.location.slice(0,2).replace(/臺/gi,'台')
-          return location.includes(city)
-        })
+        const hasCity = filterKeyword(infoArr,city)
         return hasCity.length ? hasCity[0]:infoArr[0]
       }
       return infoArr[0]
@@ -130,7 +117,7 @@ function ListBox() {
                     <p>日期時間 ： {formatTime(time)} {
                       item.showInfo.length>1 ? 
                       <Popover placement="topLeft" title="其他場次列表" 
-                        content={handleShowInfo(item.showInfo)}>
+                        content={handleShowInfo(item.showInfo,time)}>
                         <Button size="small">＋其他場次</Button>
                       </Popover>:''
                     }
@@ -153,5 +140,4 @@ function formatTime(time:string){
   }
   return time
 }
-
 export default ListBox;

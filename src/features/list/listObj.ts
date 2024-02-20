@@ -26,6 +26,18 @@ export const getDateStr =()=>{
     }
     return `${year}-${addZero(month)}-${addZero(day)}`
 }
+export function filterKeyword(data:any,word:string){
+    return data.filter((item:any)=>{
+        const location = item.location.slice(0,2).replace(/臺/gi,'台')
+          return location.includes(word)
+    })
+}
+export function filterArea(data:any,key:string){
+    return data.filter((item:any)=>{
+        const location = item.location.slice(0,2).replace(/臺/gi,'台')
+        return key.includes(location)
+    })
+}
 export const typeAreaItem:typeArea = {
     north:'北部',
     middle:'中部',
