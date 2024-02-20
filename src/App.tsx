@@ -7,7 +7,7 @@ import Notes from './features/note/Notes';
 import { useAppSelector } from './app/hooks';
 import { selectShowList } from './features/list/listSlice';
 import { typeBkItem } from './features/list/listObj';
-import { Layout,BackTop } from 'antd';
+import { Layout } from 'antd';
 const { Footer, Content } = Layout;
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <Layout className='layout' style={{backgroundImage:`url(${process.env.PUBLIC_URL}/images/${listBk})`}}>
           <ShowHeader/>
           <Notes/>
-          <BackTop />
+          
           <Content className='layout-content'>
             <ShowMenu></ShowMenu>
             <ListBox/>
