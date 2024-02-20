@@ -4,23 +4,26 @@
 @link-color: #5b36c2; // 链接色
 
 .layout {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
   text-align: center;
   font-size: 15px;
   color: #fff;
-  //background: #222;
+  background-size: cover;
   .ant-layout-header {
     background: none;
   }
   .layout-content {
     min-height: 500px;
     padding: 50px;
-    //background: #222;
   }
   .layout-footer {
     background: none;
     color: #fff;
   }
 }
+
 @media (max-width: 500px) {
   .layout {
     .layout-content {
